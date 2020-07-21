@@ -10,7 +10,7 @@ def Cookie():
 @app.route("/set_cookie")
 def set_cookie():
     resp = make_response()
-    resp.set_cookie("username","bingo") #et cookie at response header
+    resp.set_cookie("username","bingo") #在response的响应头里的 set-cookie 设置值，也就是设置cookie
     return resp
 
 if __name__ == '__main__':
