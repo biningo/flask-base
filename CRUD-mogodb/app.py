@@ -56,6 +56,23 @@ def get_by_hobby():
     return jsonify(students)
 
 
+@app.route('/get/max_age')
+def get_max_age():
+    students = db.find({},{'_id':0,'age':1}).sort('age').sort('name')
+    res = students.limit(1)[0]
+    print(list(students))
+    return res
+
+@app.route('/get/sort/age')
+def get_sort_age():
+    key = request.args.get("key")
+    key  = int(key) if key else 1
+    students = list(db.find({'deleted':0},{'_id':0,'deleted':0}).sort('age',key))
+    return jsonify(students)
+
+
+
+
 @app.route('/delete/<stu_name>',methods=['delete'])
 def delete_by_name(stu_name):
     if db.find({'name':stu_name}).count()==0:
