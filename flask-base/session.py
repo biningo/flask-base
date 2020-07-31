@@ -5,7 +5,6 @@ from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 
 # session每开一个窗口就是一个新的session
-
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/' #要用session必须设置key
 @app.route("/login/<username>")
